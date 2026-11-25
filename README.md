@@ -91,6 +91,7 @@ Evidence files are generated locally. Review them before sharing, and do not inc
 
 ## Competition material
 
-The project description and submission narrative are in [SUBMISSION_DRAFT.md](SUBMISSION_DRAFT.md). The video outline is in [VIDEO_PLAN.md](VIDEO_PLAN.md). The public source repository is published at the GitHub URL above. The public demonstration video remains a separate release requirement.
+The project description and submission narrative are in [SUBMISSION_DRAFT.md](SUBMISSION_DRAFT.md). The video outline is in [VIDEO_PLAN.md](VIDEO_PLAN.md). The final capture and publication checklist is in [RECORDING_PROCEDURE.md](RECORDING_PROCEDURE.md). The public source repository is published at the GitHub URL above. The public demonstration video remains a separate release requirement.
+
 
 
