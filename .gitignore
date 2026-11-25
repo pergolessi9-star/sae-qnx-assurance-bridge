@@ -1,0 +1,6 @@
+__pycache__/
+*.py[cod]
+*.log
+build/*.exe
+build/sae_qnx_probe_*
+evidence/*.log

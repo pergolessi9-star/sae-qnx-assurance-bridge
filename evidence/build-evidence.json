@@ -1,0 +1,13 @@
+{
+  "schema": "sae-qnx-assurance-evidence-v1",
+  "tool_version": "0.1.0",
+  "generated_utc": "2026-11-25T22:12:54.309778+00:00",
+  "status": "CROSS_COMPILE_PASS_RUNTIME_NOT_TESTED",
+  "target": "QNX SDP 8.0 x86_64 (gcc_ntox86_64)",
+  "binary": {
+    "path": "build\\sae_qnx_probe_x86_64.exe",
+    "bytes": 9392,
+    "sha256": "df1c2a934e160d85d4d11aa8ed8229c5ca0235eb702317e6c589ae3860831400"
+  },
+  "environment_report": "evidence/environment-report.json"
+}

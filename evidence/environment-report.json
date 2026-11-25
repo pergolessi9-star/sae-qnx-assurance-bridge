@@ -1,0 +1,37 @@
+{
+  "tool": "SAE QNX Assurance Bridge",
+  "version": "0.1.0",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.13.17",
+  "checked_utc": "2026-11-25T22:14:27.452648+00:00",
+  "status": "READY_FOR_BUILD",
+  "checks": [
+    {
+      "id": "sdk_root",
+      "status": "PASS",
+      "detail": "QNX SDP environment script found"
+    },
+    {
+      "id": "qcc_driver",
+      "status": "PASS",
+      "detail": "present=True, bytes=413617"
+    },
+    {
+      "id": "aarch64_cc1",
+      "status": "PASS",
+      "detail": "non-empty compiler frontend found=True"
+    },
+    {
+      "id": "x86_64_cc1",
+      "status": "PASS",
+      "detail": "non-empty compiler frontend found=True"
+    },
+    {
+      "id": "qnx_target_headers",
+      "status": "PASS",
+      "detail": "QNX target headers directory"
+    }
+  ],
+  "sdk_root": "C:\\Users\\manue\\qnx800_2",
+  "qcc": "C:\\Users\\manue\\qnx800_2\\host\\win64\\x86_64\\usr\\bin\\qcc.exe"
+}
