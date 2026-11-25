@@ -1,4 +1,4 @@
-# QNX Global Hackathon 2026 - Submission Draft
+﻿# QNX Global Hackathon 2026 - Submission Draft
 
 ## Project
 
@@ -77,7 +77,7 @@ The project-owned source and documentation carry the MIT License. The QNX SDK, Q
 - No AArch64 QNX runtime execution has been demonstrated.
 - No functional-safety certification, security certification or production-readiness claim is made.
 - The successful QEMU runtime result applies to the recorded QNX 8.0 x86_64 guest configuration.
-- The public GitHub repository and public demonstration video must be verified before the Devpost submission is finalized.
+- Public source repository: https://github.com/pergolessi9-star/sae-qnx-assurance-bridge. The public demonstration video and final Devpost submission remain pending.
 
 ## Build and test
 
@@ -87,3 +87,4 @@ See README.md and QEMU_RUNTIME.md. Core commands:
 - python sae_qnx_assurance.py inspect
 - python sae_qnx_assurance.py build --arch aarch64
 - python sae_qnx_assurance.py build --arch x86_64
+

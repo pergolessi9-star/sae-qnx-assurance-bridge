@@ -1,4 +1,4 @@
-# SAE QNX Assurance Bridge
+﻿# SAE QNX Assurance Bridge
 
 **Version:** 0.2.0
 **Category:** Developer Tooling & Host Tools
@@ -83,6 +83,7 @@ Evidence files are generated locally. Review them before sharing, and do not inc
 - The QEMU host used for the recorded test was Ubuntu 26.04.1 under WSL2 with QEMU 10.2.1. QNX's QSTI documentation referenced Ubuntu 22.04/24.04; Ubuntu 26.04.1 is therefore an experimental host configuration, even though the recorded QNX runtime test succeeded.
 - This project is a development and evidence utility. It does not provide functional-safety certification, security certification, or production-readiness assurance.
 
-## Competition material
+## Project links`r`n`r`n- Devpost project: https://devpost.com/software/sae-qnx-assurance-bridge`r`n- Public source repository: https://github.com/pergolessi9-star/sae-qnx-assurance-bridge`r`n- Hackathon: https://qnx.devpost.com/`r`n`r`n## Competition material
 
-The project description and submission narrative are in [SUBMISSION_DRAFT.md](SUBMISSION_DRAFT.md). The video outline is in [VIDEO_PLAN.md](VIDEO_PLAN.md). A public repository and public demonstration video must be checked independently before submission.
+The project description and submission narrative are in [SUBMISSION_DRAFT.md](SUBMISSION_DRAFT.md). The video outline is in [VIDEO_PLAN.md](VIDEO_PLAN.md). The public source repository is published at the GitHub URL above. The public demonstration video remains a separate release requirement.
+

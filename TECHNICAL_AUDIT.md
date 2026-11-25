@@ -1,4 +1,4 @@
-# Technical audit - 26 November 2026
+﻿# Technical audit - 26 November 2026
 
 ## Host and SDK
 
@@ -58,7 +58,7 @@ The attempted SSH connection through QEMU host forwarding was reset by the guest
 - Canonical working copy: local qnx-work checkout (absolute path intentionally omitted).
 - The older OneDrive copy is not canonical and must not overwrite the working copy.
 - Local Git history exists on branch main.
-- No Git remote is configured; no public GitHub repository has been created or pushed.
+- Public GitHub repository: https://github.com/pergolessi9-star/sae-qnx-assurance-bridge (publication to be verified after push).
 - MIT license is present and the copyright-holder encoding was corrected.
 - English README, QEMU runtime guide, technical audit, submission draft and video plan are maintained locally.
 - QNX SDK and QSTI image are excluded from the repository.
@@ -68,3 +68,4 @@ The attempted SSH connection through QEMU host forwarding was reset by the guest
 ## Status
 
 QNX SDP 8.0 SDK inspection, five automated tests, AArch64 and x86_64 cross-compilation, ELF architecture validation, and QNX 8.0 x86_64 runtime including Neutrino IPC are verified. AArch64 runtime, public GitHub publication, public video and Devpost submission remain open.
+
