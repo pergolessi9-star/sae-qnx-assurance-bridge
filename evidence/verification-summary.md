@@ -34,5 +34,7 @@
 - QEMU host: WSL2 Ubuntu 26.04.1 with QEMU 10.2.1. Ubuntu 26.04.1 is not listed in the QNX QSTI host guidance consulted; the configuration is experimental, despite the successful guest run.
 - No safety certification, security certification or production-readiness claim is made.
 - The QNX SDK and QSTI image are excluded from the source repository.
-- Public GitHub repository: https://github.com/pergolessi9-star/sae-qnx-assurance-bridge (publication to be verified after push).`r`n- Public video upload and final Devpost submission remain separate release steps.
+- Public GitHub repository: https://github.com/pergolessi9-star/sae-qnx-assurance-bridge (publication to be verified after push).
+- Public video upload and final Devpost submission remain separate release steps.
+
 
