@@ -95,3 +95,8 @@ The project description and submission narrative are in [SUBMISSION_DRAFT.md](SU
 
 
 
+
+
+## Demonstration video
+
+The English narrated demonstration (1:42) is available at [demo/SAE_QNX_Assurance_Bridge_Demo_EN.mp4](demo/SAE_QNX_Assurance_Bridge_Demo_EN.mp4). See [demo/DEMO_README.md](demo/DEMO_README.md) for scope and recording notes.

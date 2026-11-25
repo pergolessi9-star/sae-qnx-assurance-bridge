@@ -1,0 +1,28 @@
+﻿SAE QNX Assurance Bridge — live QNX guest session
+Date: 2026-11-26
+Target: QNX Neutrino 8.0.0 x86_64 under QEMU
+
+$ uname -a
+QNX qnxqemu 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64
+
+$ uname -m
+x86pc
+
+$ curl -f http://10.0.2.2:8080/sae_qnx_probe_x86_64.elf -o /tmp/sae_qnx_probe
+HTTP 200; 14,016 bytes transferred
+
+$ chmod 755 /tmp/sae_qnx_probe
+
+$ /tmp/sae_qnx_probe
+SAE_QNX_PROBE_V2
+compile_target_qnx=1
+runtime_sysname=QNX
+runtime_release=8.0.0
+runtime_machine=x86pc
+runtime_qnx=1
+qnx_msgsend=1
+
+$ echo PROBE_EXIT_CODE=$?
+PROBE_EXIT_CODE=0
+
+Result: PASS — live guest identity, Neutrino IPC round trip, exit code 0.

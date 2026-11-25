@@ -1,0 +1,13 @@
+SAE QNX Assurance Bridge is a host-side validation tool for software targeting QNX SDP 8.0.
+
+It starts by inspecting the installed SDK and checking the QNX qcc compiler components. Five automated host tests pass, followed by a command-line self-test. The inspected environment reports ready for build.
+
+The tool compiles the same QNX-specific C probe for AArch64 and x86-64, using strict warning settings. Both outputs pass ELF64 architecture validation, and the evidence records build logs and SHA-256 hashes.
+
+Next, the x86-64 probe is transferred into a running QNX 8.0.0 guest under QEMU. The guest identifies itself as QNX, and the probe executes inside the Neutrino environment.
+
+The probe creates a message channel, attaches a client connection, sends a message, receives it on the server side, and replies. The live guest session reports qnx_msgsend equals one and an exit code of zero.
+
+AArch64 cross-compilation is verified; AArch64 runtime execution is not yet tested. This tool supports engineering validation; it is not a functional-safety certification.
+
+The public MIT-licensed repository includes source code, build logs, machine-readable evidence and repeatable runtime instructions. SAE QNX Assurance Bridge: reproducible checks, inspectable evidence, accountable engineering.
