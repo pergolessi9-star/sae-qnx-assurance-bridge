@@ -14,6 +14,14 @@ def sha256(path: Path) -> str:
             h.update(block)
     return h.hexdigest()
 
+def elf_machine(path: Path) -> int:
+    header = path.read_bytes()[:20]
+    if len(header) < 20 or header[:4] != b"\x7fELF":
+        raise ValueError("Not a valid ELF header")
+    if header[4] != 2 or header[5] != 1:
+        raise ValueError("Expected a little-endian ELF64 binary")
+    return int.from_bytes(header[18:20], "little")
+
 def run(args, *, env=None, timeout=90, shell=False):
     try:
         p = subprocess.run(args, env=env, text=True, stdout=subprocess.PIPE,
@@ -81,14 +89,17 @@ def build(arch):
         print("BUILD_FAIL: compiler returned an error or produced no binary")
         print(out[-3000:])
         return 21
-    if binary.read_bytes()[:4] != b"\x7fELF":
-        print("BUILD_FAIL: output is not an ELF executable")
+    machine = elf_machine(binary)
+    expected_machine = {"aarch64": 183, "x86_64": 62}[arch]
+    if machine != expected_machine:
+        print(f"BUILD_FAIL: ELF machine {machine} does not match {arch} ({expected_machine})")
         return 22
     evidence={"schema":"sae-qnx-assurance-evidence-v1","tool_version":VERSION,
       "generated_utc":dt.datetime.now(dt.timezone.utc).isoformat(),
       "status":"CROSS_COMPILE_PASS_RUNTIME_NOT_TESTED",
       "target":f"QNX SDP 8.0 {arch} ({target})",
-      "binary":{"path":str(binary.relative_to(root)),"bytes":binary.stat().st_size,"sha256":sha256(binary)},
+      "binary":{"path":str(binary.relative_to(root)),"bytes":binary.stat().st_size,"sha256":sha256(binary),
+                "elf_class":"ELF64","elf_machine":machine,"architecture":arch},
       "environment_report":"evidence/environment-report.json"}
     (evdir/f"build-evidence-{arch}.json").write_text(json.dumps(evidence,indent=2)+"\n",encoding="utf-8")
     print(json.dumps(evidence,indent=2))

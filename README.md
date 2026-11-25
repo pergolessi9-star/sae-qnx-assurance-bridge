@@ -25,8 +25,8 @@ python .\sae_qnx_assurance.py build --arch aarch64
 python .\sae_qnx_assurance.py build --arch x86_64
 ```
 
-## QEMU runtime
-See [QEMU_RUNTIME.md](QEMU_RUNTIME.md). The QNX QSTI image is obtained from QNX Software Center and run through QEMU on WSL. Runtime is only considered verified after the x86_64 probe runs inside QNX and returns exit code 0 with `runtime_sysname=QNX`.
+## Codelab and QEMU runtime
+Follow the [10–15 minute codelab](CODELAB.md) for SDK inspection, dual-architecture builds, ELF validation and the QNX Neutrino IPC probe. See [QEMU_RUNTIME.md](QEMU_RUNTIME.md) for the QEMU deployment harness. The QNX QSTI image is obtained from QNX Software Center and run through QEMU on WSL. Runtime is only considered verified after the x86_64 probe runs inside QNX and returns exit code 0 with `runtime_sysname=QNX`.
 
 ## Evidence levels
 - READY_FOR_BUILD: expected SDK files are present and non-empty.
