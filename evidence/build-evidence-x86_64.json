@@ -1,7 +1,7 @@
 {
   "schema": "sae-qnx-assurance-evidence-v1",
   "tool_version": "0.2.0",
-  "generated_utc": "2026-11-25T23:12:34.580024+00:00",
+  "generated_utc": "2026-11-25T23:34:01.762723+00:00",
   "status": "CROSS_COMPILE_PASS_RUNTIME_NOT_TESTED",
   "target": "QNX SDP 8.0 x86_64 (gcc_ntox86_64)",
   "source": {

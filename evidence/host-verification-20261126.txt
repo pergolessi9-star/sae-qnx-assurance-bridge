@@ -1,0 +1,21 @@
+﻿SAE QNX Assurance Bridge — live host verification
+Date: 2026-11-26 (Windows local session)
+Host: Windows 11, Python 3.13.17
+Project version: 0.2.0
+
+Commands executed from the repository root:
+- python -m unittest discover -s tests -v
+- python .\sae_qnx_assurance.py self-test
+- python .\sae_qnx_assurance.py inspect
+- python .\sae_qnx_assurance.py build --arch aarch64
+- python .\sae_qnx_assurance.py build --arch x86_64
+
+Results:
+- Unit tests: 5 passed, 0 failed (exit code 0).
+- CLI self-test: SELF_TEST_PASS (exit code 0).
+- SDK inspection: READY_FOR_BUILD (exit code 0).
+- AArch64: CROSS_COMPILE_PASS_RUNTIME_NOT_TESTED; ELF64, machine 183, 14,288 bytes (exit code 0).
+- x86_64: CROSS_COMPILE_PASS_RUNTIME_NOT_TESTED; ELF64, machine 62, 14,016 bytes (exit code 0).
+- Compiler flags: -Wall -Wextra -Werror.
+
+This run verifies host-side checks and cross-compilation only. It does not claim a new QNX guest execution. The separately recorded QNX 8.0.0 x86_64 guest execution and Neutrino IPC result are documented in qnx-runtime-output.txt.
