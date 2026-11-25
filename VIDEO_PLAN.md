@@ -1,4 +1,4 @@
-# Demonstration video plan - under 3 minutes
+﻿# Demonstration video plan - under 3 minutes
 
 **Target duration:** 2 minutes 30 seconds
 **Language:** English
@@ -13,3 +13,7 @@
 7. **2:20-2:30 - Close.** Show repository URL, MIT license and project title.
 
 The final recording must be under three minutes and uploaded publicly to YouTube. Do not include QNX credentials, proprietary SDK files, the QNX system image, or private account information.
+
+
+Detailed narration, timing and recording checklist: [VIDEO_SCRIPT_EN.md](VIDEO_SCRIPT_EN.md).
+
