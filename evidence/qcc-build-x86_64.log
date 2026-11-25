@@ -1,0 +1,11 @@
+SAE QNX Assurance Bridge build log
+tool_version=0.2.0
+sdk_root=<QNX_SDP_ROOT>
+target=gcc_ntox86_64
+source=<PROJECT_ROOT>/src/sae_qnx_probe.c
+source_sha256=55a9b541ff3663840d54dc69513f394e08a6f06a8cadf001d8d02fb6b2c390dc
+compiler_flags=-Wall -Wextra -Werror
+command=cd /d "<TEMP>" && call "<QNX_SDP_ROOT>/qnxsdp-env.bat" >nul 2>&1 && qcc -Vgcc_ntox86_64 -Wall -Wextra -Werror -o "<TEMP>\sae_qnx_probe_x86_64.elf" "<TEMP>\sae_qnx_probe.c"
+exit_code=0
+----- compiler output -----
+

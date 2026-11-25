@@ -1,0 +1,120 @@
+{
+  "schema": "sae-qnx-source-evidence-manifest-v1",
+  "project": "SAE QNX Assurance Bridge",
+  "version": "0.2.0",
+  "generated_utc": "2026-11-25T23:12:34.835653+00:00",
+  "scope": "source, tests, documentation and evidence; generated build binaries excluded",
+  "file_count": 22,
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 69,
+      "sha256": "5ffb1b2cb735436ac23bde866e1036afc4f034837e141f4ff07460c3d2f062ec"
+    },
+    {
+      "path": "CODELAB.md",
+      "bytes": 2399,
+      "sha256": "d846db465542391cdd5dae263619cc9a337bcd7294bd5870bc05cf9db21d1c64"
+    },
+    {
+      "path": "evidence/build-evidence-aarch64.json",
+      "bytes": 826,
+      "sha256": "2684b95317ab3e462494e078b7af1948c4307c66b892267694595487e226c07f"
+    },
+    {
+      "path": "evidence/build-evidence-x86_64.json",
+      "bytes": 818,
+      "sha256": "9dfab356a8b2bcf888435c330d2ad47752e5faab25cc89b40b3e7b27616fe15f"
+    },
+    {
+      "path": "evidence/environment-report.json",
+      "bytes": 936,
+      "sha256": "8d846202b1e1cb10022fe89086618994d75586bfe3cbd63acce155f7f7f6eb39"
+    },
+    {
+      "path": "evidence/qcc-build-aarch64.log",
+      "bytes": 496,
+      "sha256": "d93d661417e055ef37efde5168554b7e487eecbfd52149796bb29604c4ac825c"
+    },
+    {
+      "path": "evidence/qcc-build-x86_64.log",
+      "bytes": 489,
+      "sha256": "137eff1119c3f0a9486e65edc09dd7f7368bc843ed2f69d3fbb01d5effa0720b"
+    },
+    {
+      "path": "evidence/qnx-runtime-output.txt",
+      "bytes": 2150,
+      "sha256": "5fb53a52d720d9be4da07927d57bebb6302f3e49bdaf2311d56ec50bc25339d6"
+    },
+    {
+      "path": "evidence/verification-summary.md",
+      "bytes": 1731,
+      "sha256": "e840fb08a749cb71484d402c52fc493051201bffc158936469eef993c510e880"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1079,
+      "sha256": "6c1cb582b5568d04b1ac1ae59df4536e64945a2c9d12b4f15a29fa47193c15d6"
+    },
+    {
+      "path": "QEMU_RUNTIME.md",
+      "bytes": 2594,
+      "sha256": "25e34df0937c0f3ed16854e839917fb4a5291186d0e05483a8fdfe9d7b294028"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4625,
+      "sha256": "3b6ffe86557e0e16ecba2362fef4cba3d3d138e32f0dc9c5b8e28e41d22c17a5"
+    },
+    {
+      "path": "sae_qnx_assurance.py",
+      "bytes": 10293,
+      "sha256": "51b096c69eb4f4022ad009e33ca3900179dd6926132617aebc69dfbd837cdaf7"
+    },
+    {
+      "path": "scripts/create-manifest.py",
+      "bytes": 2012,
+      "sha256": "c0e3e793fce39489933de5b73f7d0bb07fbce043676dcfc94fa9b96a649c1f45"
+    },
+    {
+      "path": "scripts/deploy-and-test-qnx.sh",
+      "bytes": 1748,
+      "sha256": "537614abdef51af794921bc7f3b921a2992ac637743fd3eada06c233a8040424"
+    },
+    {
+      "path": "scripts/run-qnx-qemu-wsl.sh",
+      "bytes": 811,
+      "sha256": "ba37a1f8cfed656da71ebfca6ad7dc1962e0467ed53236df50007f5540e111f1"
+    },
+    {
+      "path": "scripts/serve-probe-wsl.sh",
+      "bytes": 820,
+      "sha256": "1f7c163f55e379a3fa9d8136da8bc145d9e34b2abd7619e7be64dfb386d78154"
+    },
+    {
+      "path": "src/sae_qnx_probe.c",
+      "bytes": 2900,
+      "sha256": "55a9b541ff3663840d54dc69513f394e08a6f06a8cadf001d8d02fb6b2c390dc"
+    },
+    {
+      "path": "SUBMISSION_DRAFT.md",
+      "bytes": 4796,
+      "sha256": "8919f1bbdf130699bf9826f429bf7f413a3b7c64cc3aa694d7f26c7bb605aff7"
+    },
+    {
+      "path": "TECHNICAL_AUDIT.md",
+      "bytes": 3855,
+      "sha256": "cd3cd1bd3a09d3993733219aaf65e862df6543f0ea449ce7e07cbea4cc4eba85"
+    },
+    {
+      "path": "tests/test_bridge.py",
+      "bytes": 2221,
+      "sha256": "893c1c5673f359f45a1a8fedfdc9db959a337b5aeb6a8893bd64cc1d242316f3"
+    },
+    {
+      "path": "VIDEO_PLAN.md",
+      "bytes": 1187,
+      "sha256": "2140d1a4f248cdd5b3da5e54222ca4059e6a9769e50d83d78ecc595b0160f10c"
+    }
+  ]
+}

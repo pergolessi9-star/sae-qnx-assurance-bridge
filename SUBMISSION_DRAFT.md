@@ -1,58 +1,89 @@
-# QNX Global Hackathon — Submission Draft
+# QNX Global Hackathon 2026 - Submission Draft
 
 ## Project
-SAE QNX Assurance Bridge
+
+SAE QNX Assurance Bridge 0.2.0
 
 ## Category
+
 Developer Tooling & Host Tools
 
 ## Short description
-A host-side assurance utility for QNX SDP 8.0 that inspects the development environment, validates critical compiler components, builds reproducible target probes for AArch64 and x86_64, verifies ELF machine types, and generates SHA-256-backed evidence manifests. Its QNX probe exercises Neutrino microkernel message passing.
+
+A host-side assurance utility for QNX SDP 8.0 that inspects the SDK, validates required compiler components, builds reproducible AArch64 and x86_64 target probes, verifies ELF architecture, and generates SHA-256-backed build evidence. Its QNX-specific probe also exercises Neutrino microkernel message passing on a running QNX target.
 
 ## Problem
-QNX development environments can appear installed while individual toolchain components are missing or damaged. A successful qcc driver invocation alone does not prove that the required target compiler front-end exists or that a produced artifact is a valid executable for the intended architecture. Teams need a repeatable preflight and evidence trail before attempting target deployment.
 
-## What the project does
-- Detects QNX SDP environment scripts and SDK root.
-- Checks the qcc driver, target headers, and GCC front-ends for AArch64 and x86_64.
-- Fails closed when a required compiler component is missing.
-- Invokes qcc for the selected QNX target.
-- Validates ELF64, little-endian format and the expected machine type.
-- Records build logs, artifact size, SHA-256 and machine-readable evidence.
-- Includes a QNX-specific IPC probe using ChannelCreate, ConnectAttach, MsgSend, MsgReceive and MsgReply.
+A QNX development environment can appear installed while essential compiler components are missing or damaged. A successful qcc driver invocation alone does not prove that the target compiler front-end is present, that the resulting binary is an ELF executable for the intended architecture, or that the program actually runs on QNX.
+
+Teams need a repeatable preflight and evidence trail that separates SDK readiness, cross-compilation, binary validation and target runtime execution.
+
+## Solution
+
+SAE QNX Assurance Bridge provides a small, auditable host-side workflow:
+
+- Detects the QNX SDP environment and SDK root.
+- Checks the qcc driver, QNX target headers and GCC 12.2.0 front-ends for AArch64 and x86_64.
+- Fails closed when required SDK components are missing.
+- Stages source files into a temporary ASCII-only path to avoid Windows toolchain path-handling failures.
+- Invokes qcc with -Wall, -Wextra and -Werror.
+- Validates ELF64, little-endian format and the expected machine identifier.
+- Records source and binary SHA-256 hashes, compiler flags, build logs and machine-readable JSON evidence.
 - Distinguishes cross-compilation success from target runtime success.
+- Runs a QNX-specific Neutrino IPC probe using ChannelCreate, ConnectAttach, MsgSend, MsgReceive and MsgReply.
 
-## QNX 8.0 connection
-The project uses the QNX SDP 8.0 Windows host toolchain and qcc target specifications:
+## QNX 8.0 integration
+
+The project uses QNX SDP 8.0 target variants:
+
 - AArch64: gcc_ntoaarch64le
 - x86_64: gcc_ntox86_64
 
-The QNX probe calls uname() and uses the Neutrino message-passing API to create a channel, attach a local connection, exchange a PING/PONG message and reply. The host tool checks QNX compiler components and validates target-specific ELF outputs.
+The C probe uses uname() to identify the target runtime. When compiled for QNX, it creates a Neutrino channel, starts a server thread, sends a PING message, receives it, and returns PONG. Runtime acceptance requires the QNX identity checks and the IPC round trip to succeed.
 
-## Verified results as of 25 November 2026
+## Verified results
+
+Verification performed on 26 November 2026:
+
 - Windows 11 host; Python 3.13.17.
-- Four automated unit tests passed.
-- SDK inspection returned READY_FOR_BUILD for the recovered qnx800_2 installation.
-- qcc generated a 14,288-byte AArch64 ELF64 binary (machine 183); SHA-256 dce8db8dcf367652352d0ec49006175b0a9fedf45ad824acbc8d0ecbb0cfaf8a.
-- qcc generated a 14,016-byte x86_64 ELF64 binary (machine 62); SHA-256 5a449cf7b4cc00505cddb153c5e42b4a839286145e63e0ba2f78df46fa50b3e5.
-- Both builds include the QNX Neutrino IPC probe and pass the ELF architecture gate.
+- QNX SDP 8.0 SDK inspection: READY_FOR_BUILD.
+- Automated tests: 5 passed, 0 failed.
+- AArch64 cross-build: PASS; ELF64 machine 183; 14,288 bytes.
+- x86_64 cross-build: PASS; ELF64 machine 62; 14,016 bytes.
+- Both builds use -Wall -Wextra -Werror.
+- QNX 8.0 x86_64 QEMU boot: PASS.
+- QNX guest identity: QNX 8.0.0, x86pc / x86_64.
+- Runtime probe: compile_target_qnx=1, runtime_sysname=QNX, runtime_qnx=1.
+- Neutrino IPC: qnx_msgsend=1.
+- Runtime probe exit code: 0.
+- SHA-256 evidence is stored in evidence/.
+
+## Runtime test environment and qualification
+
+The QNX guest was run with QEMU 10.2.1 under WSL2 Ubuntu 26.04.1 LTS. The QNX QSTI documentation consulted for this project referenced Ubuntu 22.04/24.04; Ubuntu 26.04.1 is not listed in that guidance. The actual guest boot and probe execution succeeded, but the host distribution is therefore described as an experimental configuration rather than an officially supported one.
+
+Runtime was verified on x86_64 only. AArch64 cross-compilation and ELF validation are verified; execution on an AArch64 QNX target remains untested.
+
+## Existing-project update
+
+The earlier SAE QNX Assurance Bridge prototype was materially extended during the hackathon period. Version 0.2.0 adds fail-closed SDK component inspection, Unicode-path staging, warning-as-error builds, ELF machine validation, expanded automated tests, per-build logs, source and binary hashes, and a successful QNX 8.0 Neutrino IPC runtime demonstration.
+
+## License and distribution
+
+The project-owned source and documentation carry the MIT License. The QNX SDK, QNX QSTI image, proprietary libraries and other third-party components are not included in the repository. Users must obtain and license those components independently.
 
 ## Explicit limitations
-The QNX target runtime has not yet been demonstrated. The official QNX QSTI for QEMU has been installed and its 47.3 GiB virtual disk is being unpacked with sparse-file handling. No claim of QNX boot, runtime IPC success, safety certification or production readiness is made until the probe runs on the target.
+
+- No AArch64 QNX runtime execution has been demonstrated.
+- No functional-safety certification, security certification or production-readiness claim is made.
+- The successful QEMU runtime result applies to the recorded QNX 8.0 x86_64 guest configuration.
+- The public GitHub repository and public demonstration video must be verified before the Devpost submission is finalized.
 
 ## Build and test
-See README.md and CODELAB.md. Required commands:
+
+See README.md and QEMU_RUNTIME.md. Core commands:
+
 - python -m unittest discover -s tests -v
 - python sae_qnx_assurance.py inspect
 - python sae_qnx_assurance.py build --arch aarch64
 - python sae_qnx_assurance.py build --arch x86_64
-
-## Existing-project update statement
-The prior SAE QNX Assurance Bridge concept has been materially extended during the hackathon submission period with a new host-side diagnostic and build-evidence utility, dual-architecture QNX 8.0 compilation, ELF machine validation, automated tests, fail-closed checks, SHA-256 evidence generation, and a QNX Neutrino IPC probe. The new source, tests, documentation and dated evidence files document this work.
-
-## Required before submission
-- Complete QNX 8.0 QEMU boot and run the IPC probe successfully.
-- Capture a public YouTube demo under three minutes.
-- Verify the public GitHub repository and visible MIT license.
-- Review applicant eligibility, intellectual-property ownership and all Devpost submission answers.
-- Review all text and links in Devpost before submitting.

@@ -1,11 +1,21 @@
 {
   "schema": "sae-qnx-assurance-evidence-v1",
-  "tool_version": "0.1.0",
-  "generated_utc": "2026-11-25T22:33:48.940434+00:00",
+  "tool_version": "0.2.0",
+  "generated_utc": "2026-11-25T23:12:34.580024+00:00",
   "status": "CROSS_COMPILE_PASS_RUNTIME_NOT_TESTED",
   "target": "QNX SDP 8.0 x86_64 (gcc_ntox86_64)",
+  "source": {
+    "path": "src/sae_qnx_probe.c",
+    "sha256": "55a9b541ff3663840d54dc69513f394e08a6f06a8cadf001d8d02fb6b2c390dc"
+  },
+  "compiler_flags": [
+    "-Wall",
+    "-Wextra",
+    "-Werror"
+  ],
+  "build_log": "evidence\\qcc-build-x86_64.log",
   "binary": {
-    "path": "build\\sae_qnx_probe_x86_64.exe",
+    "path": "build\\sae_qnx_probe_x86_64.elf",
     "bytes": 14016,
     "sha256": "5a449cf7b4cc00505cddb153c5e42b4a839286145e63e0ba2f78df46fa50b3e5",
     "elf_class": "ELF64",

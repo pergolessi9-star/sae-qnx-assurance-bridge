@@ -1,9 +1,9 @@
 {
   "tool": "SAE QNX Assurance Bridge",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "host": "Windows-11-10.0.26200-SP0",
   "python": "3.13.17",
-  "checked_utc": "2026-11-25T22:33:46.792689+00:00",
+  "checked_utc": "2026-11-25T23:12:34.438372+00:00",
   "status": "READY_FOR_BUILD",
   "checks": [
     {
@@ -32,6 +32,6 @@
       "detail": "QNX target headers directory"
     }
   ],
-  "sdk_root": "C:\\Users\\manue\\qnx800_2",
-  "qcc": "C:\\Users\\manue\\qnx800_2\\host\\win64\\x86_64\\usr\\bin\\qcc.exe"
+  "sdk_root": "<QNX_SDP_ROOT>",
+  "qcc": "<QNX_SDP_ROOT>/host/win64/x86_64/usr/bin/qcc.exe"
 }

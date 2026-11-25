@@ -1,6 +1,7 @@
 __pycache__/
 *.py[cod]
-*.log
+build/*.elf
 build/*.exe
-build/sae_qnx_probe_*
-evidence/*.log
+*.tmp
+*.zip
+.DS_Store

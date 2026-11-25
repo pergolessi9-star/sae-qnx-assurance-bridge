@@ -1,0 +1,61 @@
+SAE QNX Assurance Bridge - QNX 8.0 runtime evidence
+Date: 2026-11-26
+Test status: PASS
+Test target: QNX Neutrino 8.0.0, x86_64 guest under QEMU
+
+Host and emulator:
+- Host OS: Windows 11 with WSL2
+- WSL distribution: Ubuntu 26.04.1 LTS
+- QEMU: 10.2.1
+- QNX QSTI image: official QNX Quickstart for QEMU, obtained through QNX Software Center
+- Virtual disk extent: 50,826,834,432 bytes (47.3 GiB logical)
+- Sparse allocation reported by qemu-img: approximately 5.01 GiB
+
+Guest identity observed:
+$ uname -a
+QNX qnxqemu 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64
+
+$ uname -m
+x86pc
+
+Filesystem checks:
+- /boot accessible; contains network
+- /usr accessible; contains bin, etc, include, lib, libexec, local, opt, sbin, share, usr, toybox
+- /data accessible; contains home, share, var
+
+Transfer:
+- Transport: temporary HTTP server in WSL through QEMU user networking
+- Guest URL: http://10.0.2.2:8080/sae_qnx_probe_x86_64.elf
+- HTTP result: 200
+- Bytes transferred: 14,016
+- Guest destination: /tmp/sae_qnx_probe
+- Guest chmod: 755
+- Host binary SHA-256: 5a449cf7b4cc00505cddb153c5e42b4a839286145e63e0ba2f78df46fa50b3e5
+
+Actual guest execution:
+$ /tmp/sae_qnx_probe
+SAE_QNX_PROBE_V2
+compile_target_qnx=1
+runtime_sysname=QNX
+runtime_release=8.0.0
+runtime_machine=x86pc
+runtime_qnx=1
+qnx_msgsend=1
+
+$ echo PROBE_EXIT_CODE=$?
+PROBE_EXIT_CODE=0
+
+Acceptance:
+- QNX compile target macro: PASS
+- Runtime OS identification: PASS
+- QNX runtime flag: PASS
+- Neutrino message-passing round trip: PASS
+- Process exit code: 0
+- Result: RUNTIME_PASS
+
+Qualification:
+- This evidence verifies the x86_64 QNX 8.0 QEMU guest only.
+- AArch64 cross-compilation is verified separately; AArch64 target runtime has not been tested.
+- Ubuntu 26.04.1 is not among the Ubuntu releases cited in the QNX QSTI guidance consulted (22.04/24.04). The guest run succeeded, but the host distribution remains an experimental configuration.
+- The QNX SDK and QSTI image are proprietary components and are not included in this project repository.
+- SSH forwarding was not used for this successful test; the guest was operated through its serial console and the binary was transferred over HTTP.
