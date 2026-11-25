@@ -2,14 +2,14 @@
   "schema": "sae-qnx-source-evidence-manifest-v1",
   "project": "SAE QNX Assurance Bridge",
   "version": "0.2.0",
-  "generated_utc": "2026-11-25T23:12:34.835653+00:00",
+  "generated_utc": "2026-11-25T23:28:06.677145+00:00",
   "scope": "source, tests, documentation and evidence; generated build binaries excluded",
   "file_count": 22,
   "files": [
     {
       "path": ".gitignore",
-      "bytes": 69,
-      "sha256": "5ffb1b2cb735436ac23bde866e1036afc4f034837e141f4ff07460c3d2f062ec"
+      "bytes": 169,
+      "sha256": "8c9ec39cc736c50ba2fbbcad0fe9546205823442e0e01a37938729eeaf88180e"
     },
     {
       "path": "CODELAB.md",
@@ -48,8 +48,8 @@
     },
     {
       "path": "evidence/verification-summary.md",
-      "bytes": 1731,
-      "sha256": "e840fb08a749cb71484d402c52fc493051201bffc158936469eef993c510e880"
+      "bytes": 1959,
+      "sha256": "231f5a999f9ecab0a30374ae7b95393b722537d37c370fe863052196bf0c629f"
     },
     {
       "path": "LICENSE",
@@ -63,8 +63,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 4625,
-      "sha256": "3b6ffe86557e0e16ecba2362fef4cba3d3d138e32f0dc9c5b8e28e41d22c17a5"
+      "bytes": 4895,
+      "sha256": "cf3aa43c55bc99e340e8c48c1ff6f3a7b4bcd956ce4ae9aa93786d910e8e235f"
     },
     {
       "path": "sae_qnx_assurance.py",
@@ -98,13 +98,13 @@
     },
     {
       "path": "SUBMISSION_DRAFT.md",
-      "bytes": 4796,
-      "sha256": "8919f1bbdf130699bf9826f429bf7f413a3b7c64cc3aa694d7f26c7bb605aff7"
+      "bytes": 4844,
+      "sha256": "536844c74b07d84628e102fe39533368dd48eebfd39664b35c528bf49f17389a"
     },
     {
       "path": "TECHNICAL_AUDIT.md",
-      "bytes": 3855,
-      "sha256": "cd3cd1bd3a09d3993733219aaf65e862df6543f0ea449ce7e07cbea4cc4eba85"
+      "bytes": 4165,
+      "sha256": "81c65f427b0c0e48f42905285f78015f359aaa85bff01b26ec0dc5a85a6fc82a"
     },
     {
       "path": "tests/test_bridge.py",

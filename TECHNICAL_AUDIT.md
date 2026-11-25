@@ -58,7 +58,8 @@ The attempted SSH connection through QEMU host forwarding was reset by the guest
 - Canonical working copy: local qnx-work checkout (absolute path intentionally omitted).
 - The older OneDrive copy is not canonical and must not overwrite the working copy.
 - Local Git history exists on branch main.
-- Public GitHub repository: https://github.com/pergolessi9-star/sae-qnx-assurance-bridge (publication to be verified after push).
+- Public GitHub repository created and pushed on 26 November 2026: https://github.com/pergolessi9-star/sae-qnx-assurance-bridge (branch main; MIT license).
+- The existing Devpost project was updated to link to the public GitHub repository; no duplicate Devpost project was created.
 - MIT license is present and the copyright-holder encoding was corrected.
 - English README, QEMU runtime guide, technical audit, submission draft and video plan are maintained locally.
 - QNX SDK and QSTI image are excluded from the repository.
@@ -67,5 +68,6 @@ The attempted SSH connection through QEMU host forwarding was reset by the guest
 
 ## Status
 
-QNX SDP 8.0 SDK inspection, five automated tests, AArch64 and x86_64 cross-compilation, ELF architecture validation, and QNX 8.0 x86_64 runtime including Neutrino IPC are verified. AArch64 runtime, public GitHub publication, public video and Devpost submission remain open.
+QNX SDP 8.0 SDK inspection, five automated tests, AArch64 and x86_64 cross-compilation, ELF architecture validation, and QNX 8.0 x86_64 runtime including Neutrino IPC are verified. The public GitHub repository is live and linked from the existing Devpost project. AArch64 runtime and the public demonstration video remain open; the final hackathon submission is not yet submitted.
+
 
