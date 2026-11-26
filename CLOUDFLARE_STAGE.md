@@ -58,3 +58,10 @@ Additional live remote executions completed after the connectivity repair:
 - `build-aarch64`: PASS; ELF64, machine 183; build evidence and qcc log uploaded to R2. Runtime not tested by this job.
 - `build-x86_64`: PASS; ELF64, machine 62; build evidence and qcc log uploaded to R2. Runtime not tested by this job.
 All five live jobs (self-test, unit-tests, inspect, AArch64 build, x86_64 build) completed with exit code 0. The prior QEMU x86_64 runtime/Neutrino IPC evidence remains a separate verified test.
+
+## KV daily write quota incident and mitigation — 2026-11-26
+Cloudflare Worker Observability captured the authenticated heartbeat exception: `KV put() limit exceeded for the day.` The Worker could read the agent-token record, but the daily KV write allowance was exhausted when it attempted to update `agent:last_seen`. The resulting HTTP 500 / Error 1101 was therefore a quota exhaustion symptom, not a DNS or credential failure.
+
+The agent API Worker was updated and redeployed as version `79525f0a-8243-4d05-84c9-0ef40ce8d2fa`. The heartbeat handler now converts this specific quota condition into HTTP 429 with a sanitized response instead of an unhandled exception. The local agent was updated to version 0.4: heartbeat every 300 seconds, job polling every 10 seconds, and a 300-second backoff after HTTP 429. The local process was intentionally stopped while the daily KV write quota remains exhausted; it must be restarted after quota recovery and a successful authenticated heartbeat must be confirmed.
+
+Validation after deployment: unauthenticated heartbeat returns HTTP 401 as required; authenticated heartbeat returns HTTP 429 while the daily write quota remains exhausted. This confirms token parsing and quota-specific error handling, but does not yet prove recovery or a new heartbeat write. Cloudflare Worker Observability (logs, traces and real-time issues) is temporarily enabled at 100% sampling for diagnosis; review usage and reduce/disable it after the recovery test.
