@@ -100,3 +100,15 @@ The project description and submission narrative are in [SUBMISSION_DRAFT.md](SU
 ## Demonstration video
 
 The English narrated demonstration (1:42) is available at [demo/SAE_QNX_Assurance_Bridge_Demo_EN.mp4](demo/SAE_QNX_Assurance_Bridge_Demo_EN.mp4). See [demo/DEMO_README.md](demo/DEMO_README.md) for scope and recording notes.
+
+
+## Cloudflare STAGE 0.3.0 — deployed control plane
+
+- Protected dashboard: https://sae-qnx-assurance-bridge.pergolessi9.workers.dev
+- Isolated public local-agent API: https://sae-qnx-assurance-agent.pergolessi9.workers.dev
+- Cloudflare Access: one-time PIN, existing owner/account-member allow policy, signed JWT validation in the dashboard Worker.
+- EU Workers KV namespace: profiles, pairing-code hashes, agent token hashes, job state and audit events.
+- Dedicated R2 bucket: execution results, SDK environment reports, build-evidence JSON and qcc logs.
+- Windows agent: fixed allowlist (inspect, self-test, unit-tests, build-aarch64, build-x86_64); no arbitrary shell or remote code execution.
+
+See [CLOUDFLARE_STAGE.md](CLOUDFLARE_STAGE.md) for setup, pairing and limitations. D1 creation was blocked by the account's ten-database system limit; no other project's D1 database was reused. Registration is invite-controlled: Access allow policy first, then owner approval in the dashboard.

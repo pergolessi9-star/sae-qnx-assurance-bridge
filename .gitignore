@@ -15,3 +15,4 @@ build/*.exe
 *.secrets
 credentials.json
 secrets.json
+.wrangler/

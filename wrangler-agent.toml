@@ -1,0 +1,12 @@
+name = "sae-qnx-assurance-agent"
+main = "cloudflare/agent-worker.js"
+compatibility_date = "2026-11-25"
+workers_dev = true
+
+[[kv_namespaces]]
+binding = "REGISTRY"
+id = "54e84706adf34f3e991d2e49643f799b"
+
+[[r2_buckets]]
+binding = "EVIDENCE"
+bucket_name = "sae-qnx-assurance-evidence"
