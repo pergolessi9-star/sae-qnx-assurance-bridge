@@ -52,3 +52,9 @@ Updated endpoints:
 - Dashboard: `https://qnx.profmanuelgago.pw` (Cloudflare Access protected)
 - Agent API: `https://qnx-agent.profmanuelgago.pw` (public edge, bearer-token protected)
 - Original `workers.dev` hostnames are retained as deployment endpoints but are not the configured endpoint for the local agent.
+
+Additional live remote executions completed after the connectivity repair:
+- `inspect`: PASS; `READY_FOR_BUILD`; environment report uploaded to R2.
+- `build-aarch64`: PASS; ELF64, machine 183; build evidence and qcc log uploaded to R2. Runtime not tested by this job.
+- `build-x86_64`: PASS; ELF64, machine 62; build evidence and qcc log uploaded to R2. Runtime not tested by this job.
+All five live jobs (self-test, unit-tests, inspect, AArch64 build, x86_64 build) completed with exit code 0. The prior QEMU x86_64 runtime/Neutrino IPC evidence remains a separate verified test.
