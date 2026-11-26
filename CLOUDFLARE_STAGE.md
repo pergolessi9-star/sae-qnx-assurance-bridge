@@ -33,7 +33,7 @@ No paid external AI API, email vendor, payment gateway or proprietary SDK is int
 
 ## Deployment record and operational constraints
 
-The dashboard Worker and the separate agent Worker are deployed on Workers.dev. The dashboard is protected by the existing Cloudflare Access application; the agent endpoint is public at the network edge but requires a one-time pairing code and a bearer token for all subsequent calls. Pairing codes are 128-bit random values and expire after 10 minutes. Agent tokens expire after 90 days.
+The dashboard Worker and the separate agent Worker are deployed on Workers.dev. The dashboard is protected by the existing Cloudflare Access application; the agent endpoint is public at the network edge but requires a one-time pairing code and a bearer token for all subsequent calls. Pairing codes are 128-bit random values and expire after 10 minutes. Newly issued agent tokens expire after 90 days. The initial machine token predates that expiry setting and remains active until explicitly rotated.
 
 The KV namespace is created with EU jurisdiction. The R2 bucket was created with a WEUR location hint but its jurisdiction is the default jurisdiction; do not represent it as EU-jurisdiction storage. The account has no available D1 database slot because it has reached the system maximum of ten databases.
 
