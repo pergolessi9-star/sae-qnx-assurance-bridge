@@ -15,7 +15,7 @@ D1 creation was attempted but the account reached its system limit of ten D1 dat
 
 ## Pair Windows host
 1. Sign in to the dashboard and click Generate pairing code.
-2. From the repository root run: python agent/sae_qnx_agent.py pair --url https://sae-qnx-assurance-agent.pergolessi9.workers.dev --code YOUR_CODE
+2. From the repository root run: python agent/sae_qnx_agent.py pair --url https://qnx-agent.profmanuelgago.pw --code YOUR_CODE
 3. Start: python agent/sae_qnx_agent.py run
 4. Keep the agent running while submitting diagnostics in the dashboard.
 
@@ -38,3 +38,17 @@ The dashboard Worker and the separate agent Worker are deployed on Workers.dev. 
 The KV namespace is created with EU jurisdiction. The R2 bucket was created with a WEUR location hint but its jurisdiction is the default jurisdiction; do not represent it as EU-jurisdiction storage. The account has no available D1 database slot because it has reached the system maximum of ten databases.
 
 The agent polls the KV job registry. KV is eventually consistent, so this STAGE queue is intended for one local agent and low-volume diagnostic jobs, not concurrent high-throughput scheduling. The agent runs only the fixed allowlist and sends result JSON and relevant evidence files to R2.
+
+
+## Connectivity repair — 2026-11-26
+The agent API is now attached to the custom Worker domain `https://qnx-agent.profmanuelgago.pw` rather than relying on the `workers.dev` hostname. The local agent sends the descriptive User-Agent `SAE-QNX-Assurance-Agent/0.3 (+https://qnx.profmanuelgago.pw)`; it does not impersonate a browser. Cloudflare Browser Integrity Check is disabled only for requests matching the exact host `qnx-agent.profmanuelgago.pw` and paths beginning `/api/agent/`. The zone-wide Browser Integrity Check remains enabled. The agent returned HTTP 401 for an unauthenticated API request (expected), and authenticated heartbeat traffic was observed in the dedicated KV registry.
+
+Live end-to-end job verification: `self-test` and `unit-tests` were accepted by the local agent, both exited 0, and their result JSON files were uploaded to the dedicated R2 bucket:
+- `jobs/live-selftest-20261126-0129/result.json`
+- `jobs/live-unit-tests-20261126-0129/result.json`
+The unit-test evidence records 5/5 passing tests. This proves agent-to-Worker communication, allowlisted execution, and R2 result upload. It does not complete Cloudflare Access first-login validation, token rotation, AArch64 runtime validation, or production certification.
+
+Updated endpoints:
+- Dashboard: `https://qnx.profmanuelgago.pw` (Cloudflare Access protected)
+- Agent API: `https://qnx-agent.profmanuelgago.pw` (public edge, bearer-token protected)
+- Original `workers.dev` hostnames are retained as deployment endpoints but are not the configured endpoint for the local agent.

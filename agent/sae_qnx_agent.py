@@ -5,7 +5,7 @@ from pathlib import Path
 ACTIONS={"inspect":[sys.executable,"sae_qnx_assurance.py","inspect"],"self-test":[sys.executable,"sae_qnx_assurance.py","self-test"],"unit-tests":[sys.executable,"-m","unittest","discover","-s","tests","-v"],"build-aarch64":[sys.executable,"sae_qnx_assurance.py","build","--arch","aarch64"],"build-x86_64":[sys.executable,"sae_qnx_assurance.py","build","--arch","x86_64"]}
 ROOT=Path(__file__).resolve().parents[1];CONFIG=Path.home()/".sae-qnx-assurance"/"agent.json"
 def call(base,path,token=None,body=None):
- data=json.dumps(body or {}).encode();h={"Content-Type":"application/json","Accept":"application/json","User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/158.0.0.0 Safari/537.36"}
+ data=json.dumps(body or {}).encode();h={"Content-Type":"application/json","Accept":"application/json","User-Agent":"SAE-QNX-Assurance-Agent/0.3 (+https://qnx.profmanuelgago.pw)"}
  if token:h["Authorization"]="Bearer "+token
  req=urllib.request.Request(base.rstrip("/")+path,data=data,headers=h,method="POST")
  with urllib.request.urlopen(req,timeout=30) as r:return json.loads(r.read().decode())

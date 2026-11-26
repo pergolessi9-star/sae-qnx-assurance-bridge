@@ -104,8 +104,8 @@ The English narrated demonstration (1:42) is available at [demo/SAE_QNX_Assuranc
 
 ## Cloudflare STAGE 0.3.0 — deployed control plane
 
-- Protected dashboard: https://sae-qnx-assurance-bridge.pergolessi9.workers.dev
-- Isolated public local-agent API: https://sae-qnx-assurance-agent.pergolessi9.workers.dev
+- Protected dashboard: https://qnx.profmanuelgago.pw
+- Isolated public local-agent API: https://qnx-agent.profmanuelgago.pw
 - Cloudflare Access: one-time PIN, existing owner/account-member allow policy, signed JWT validation in the dashboard Worker.
 - EU Workers KV namespace: profiles, pairing-code hashes, agent token hashes, job state and audit events.
 - Dedicated R2 bucket: execution results, SDK environment reports, build-evidence JSON and qcc logs.
